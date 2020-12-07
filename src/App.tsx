@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { SearchWeather } from "./SearchWeather";
+import { SearchHistory } from "./SearchHistory";
+import { DisplayWeather } from "./DisplayWeather";
+import { Card, CardContent } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from '@material-ui/core/Typography';
 
-function App() {
+const useStyles = makeStyles({
+  root: {
+    width: 500,
+    textAlign: "center",
+    alignItems: "center",
+    justify: "center",
+  },
+  title: {
+    paddingTop: 5,
+    paddingBottom: 5,
+    fontWeight: "bold",
+  },
+});
+
+const App: React.FC = () => {
+  const classes = useStyles();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Card className={classes.root}>
+        <CardContent>
+        <Typography className={classes.title} variant="h5" component="h2" color="primary">
+          City Weather Info
+        </Typography><br></br>
+          <SearchWeather></SearchWeather><br></br>
+          <DisplayWeather></DisplayWeather><hr></hr>
+          <SearchHistory></SearchHistory>
+        </CardContent>
+      </Card>
     </div>
   );
-}
+};
 
 export default App;
